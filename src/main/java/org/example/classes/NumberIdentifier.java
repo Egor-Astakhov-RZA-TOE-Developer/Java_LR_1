@@ -5,6 +5,8 @@ import java.util.List;
 
 public class NumberIdentifier {
     private final static char[] ROMAN_CHARS = new char[] {'X', 'I', 'V', 'L', 'C'};
+    private final static String[] ROMAN_NUMBERS_TO_X = new String[] {"I", "II", "III", "IV", "V",
+                                                                    "VI", "VII", "VIII", "IX", "X"};
     public static boolean isArabicNumber(String number){
         // Проверка, что все символы String number это цифры
         for (int i = 0; i < number.length(); i++) {
@@ -12,10 +14,17 @@ public class NumberIdentifier {
                 return false;
             }
         }
+//        return Integer.parseInt(number) <= 9;
         return true;
     }
-
     public static boolean isRomanNumber(String number){
+        for (String romanNumber: ROMAN_NUMBERS_TO_X){
+            if(number.equals(romanNumber)) return true;
+        }
+        return false;
+    }
+
+    /*public static boolean isRomanNumber(String number){
         // Проверка, что все символы String number это цифры
         // Цикл по всем символам строки
         for (int i = 0; i < number.length(); i++) {
@@ -31,5 +40,6 @@ public class NumberIdentifier {
             }
         }
         return true;
-    }
+    }*/
+
 }
