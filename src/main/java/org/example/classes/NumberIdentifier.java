@@ -1,10 +1,6 @@
 package org.example.classes;
 
-import java.util.Collections;
-import java.util.List;
-
 public class NumberIdentifier {
-    private final static char[] ROMAN_CHARS = new char[] {'X', 'I', 'V', 'L', 'C'};
     private final static String[] ROMAN_NUMBERS_TO_X = new String[] {"I", "II", "III", "IV", "V",
                                                                     "VI", "VII", "VIII", "IX", "X"};
     public static boolean isArabicNumber(String number){
@@ -14,7 +10,7 @@ public class NumberIdentifier {
                 return false;
             }
         }
-//        return Integer.parseInt(number) <= 9;
+//        return Integer.parseInt(number) <= 10 && Integer.parseInt(number) >= 1;
         return true;
     }
     public static boolean isRomanNumber(String number){

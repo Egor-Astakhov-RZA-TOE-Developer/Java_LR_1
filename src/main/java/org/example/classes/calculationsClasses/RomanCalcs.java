@@ -1,7 +1,5 @@
 package org.example.classes.calculationsClasses;
 
-import java.util.List;
-
 public class RomanCalcs extends Calculations{
     @Override
     public String addition(String num1, String num2) {
@@ -12,7 +10,7 @@ public class RomanCalcs extends Calculations{
     @Override
     public String subtraction(String num1, String num2) {
         int result = parseRomanToArabic(num1) - parseRomanToArabic(num2);
-        return result > 0 ? parseArabicToRoman(result) : "неположительный результат" ;
+        return result > 0 ? parseArabicToRoman(result) : "Неположительный результат" ;
     }
 
 
@@ -25,7 +23,7 @@ public class RomanCalcs extends Calculations{
     @Override
     public String division(String num1, String num2) {
         int result = parseRomanToArabic(num1) / parseRomanToArabic(num2);
-        return parseArabicToRoman(result);
+        return result > 0 ? parseArabicToRoman(result) : "Неположительный результат";
     }
 
     private int parseRomanToArabic(String romanNumber){
@@ -49,19 +47,15 @@ public class RomanCalcs extends Calculations{
 
         StringBuilder result = new StringBuilder();
 
-        if (decades == 10) return "С";
+        if (decades == 10) return "C";
         else if (decades > 8) result.append("XC");
         else if (decades >= 5) {
             result.append("L");
-            for (int i = 0; i < decades - 5; i++) {
-                result.append("X");
-            }
+            result.append("X".repeat(decades - 5));
         } else if (decades == 4) {
             result.append("XL");
         } else {
-            for (int i = 0; i < decades; i++) {
-                result.append("X");
-            }
+            result.append("X".repeat(Math.max(0, decades)));
         }
 
         int digits = romanNumber % 10;
@@ -69,15 +63,11 @@ public class RomanCalcs extends Calculations{
         if (digits > 8) result.append("IX");
         else if (digits >= 5) {
             result.append("V");
-            for (int i = 0; i < digits - 5; i++) {
-                result.append("I");
-            }
+            result.append("I".repeat(digits - 5));
         } else if (digits == 4) {
             result.append("IV");
         } else {
-            for (int i = 0; i < digits; i++) {
-                result.append("I");
-            }
+            result.append("I".repeat(Math.max(0, digits)));
         }
 
         return result.toString();

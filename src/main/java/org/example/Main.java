@@ -14,7 +14,7 @@ public class Main {
         String arithmeticExpression = sc.nextLine().replaceAll("\\s+", "");
 
         // Разбиваем строку на операнды и математический оператор
-        String num1 = "", operation = "", num2 = "";
+        String num1 = "", operation = "", num2;
         StringBuilder stringBuilder = new StringBuilder();
         boolean findMathOperator = false;
         for (int i = 0; i < arithmeticExpression.length(); i++) {
@@ -34,6 +34,7 @@ public class Main {
 
 
         Calculations calculations = null;
+        // логический флаг для обозначения корректности ведённых данных
         boolean isCorrect = false;
         if(NumberIdentifier.isArabicNumber(num1) != NumberIdentifier.isArabicNumber(num2)) {
             System.out.println("Неверно введён формат чисел. Оба числа должны быть в арабской или римской системе счисления, и быть не больше 9!");
@@ -57,7 +58,8 @@ public class Main {
 
             };
 
-            System.out.println("Результат: " + num1 + " " + operation + " " + num2 + " = " + result);
+//            System.out.println("Результат: " + num1 + " " + operation + " " + num2 + " = " + result);
+            System.out.println(result);
         }
     }
 }
